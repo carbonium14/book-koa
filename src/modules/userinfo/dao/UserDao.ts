@@ -1,6 +1,7 @@
 import { Op } from "sequelize"
-import { model } from "../definemodel"
+import { model } from "../defmodel"
 import { Sequelize } from "sequelize-typescript"
+// import model from '../../decormodel/userinfo'
 export type Userinfo = {
   userId: number,
   username: string,
@@ -8,8 +9,8 @@ export type Userinfo = {
   address: string,
   valid: number
 }
-class UserDaoDefine {
-  static userDaoDefine: UserDaoDefine = new UserDaoDefine()
+class UserDao {
+  static userDao: UserDao = new UserDao()
   addUser(userinfo: Userinfo) {
     return model.create(userinfo)
   }
@@ -75,4 +76,4 @@ class UserDaoDefine {
     })
   }
 }
-export default UserDaoDefine.userDaoDefine
+export default UserDao.userDao

@@ -1,8 +1,9 @@
 import DbConfig from "../conf/DbConfig"
 import { Dialect } from "sequelize"
 import { Sequelize } from "sequelize-typescript"
-class BaseDaoDefine {
-  static baseDaoOrm: BaseDaoDefine = new BaseDaoDefine()
+import path from 'path'
+class BaseDao {
+  static baseDao: BaseDao = new BaseDao()
   sequelize!: Sequelize
   constructor() {
     this.initSqlConf('mysql')
@@ -16,8 +17,21 @@ class BaseDaoDefine {
       define: {
         timestamps: false,
         freezeTableName: true
+      },
+      pool: {
+        max: 10,
+        min: 5,
+        idle: 10000,
+        acquire: 10000,
       }
     })
+    
+  }
+  addModels() {
+    const modelPath = path.join(process.cwd(), '/src/modules/decormodel')
+    this.sequelize.addModels([modelPath])
   }
 }
-export const { sequelize } = BaseDaoDefine.baseDaoOrm
+const baseDao = BaseDao.baseDao
+baseDao.addModels()
+export const { sequelize } = baseDao

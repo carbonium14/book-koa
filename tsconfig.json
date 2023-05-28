@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es2021",
-    "useDefineForClassFields": true,
+    "target": "ES5",
+    // "useDefineForClassFields": true,
     "module": "CommonJS",
     "moduleResolution": "node",
     "allowJs": true,
@@ -13,6 +13,8 @@
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
     "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
