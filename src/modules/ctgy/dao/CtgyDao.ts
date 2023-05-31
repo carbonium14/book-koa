@@ -7,5 +7,10 @@ class CtgyDao {
     const secThrCtgys: any[] = (await sequelize.query(sql))[0]
     return convert(secThrCtgys)
   }
+  async findFirstCtgys() {
+    const sql = 'select * from firstctgy'
+    const firstCtgys: any[] = (await sequelize.query(sql))[0]
+    return firstCtgys
+  }
 }
 export default CtgyDao.ctgyDao
