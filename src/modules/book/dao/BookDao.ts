@@ -19,5 +19,21 @@ class BookDao {
       offset,
     })
   }
+  async findBooksByThirdCtgyId(thirdctgyid: number) {
+    return await booksModel.findAll({
+      raw: true,
+      where: {
+        thirdctgyid
+      }
+    })
+  }
+  async findBooksBySecondCtgyId(secondctgyid: number) {
+    return await booksModel.findAll({
+      raw: true,
+      where: {
+        secondctgyid,
+      },
+    })
+  }
 }
 export default BookDao.bookDao
