@@ -18,5 +18,12 @@ class ShopCartDao {
     const sql = `update shopcart set purcharsenum=${shopcart.purcharsenum} where shopcartid=${shopcart.shopcartid}`
     return await sequelize.query(sql)
   }
+  async delOneBookFrmSc(shopcartid: number) {
+    return await shopCartModel.destroy({
+      where: {
+        shopcartid
+      }
+    })
+  }
 }
 export default ShopCartDao.shopCartDao

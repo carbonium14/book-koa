@@ -13,5 +13,8 @@ class ShopCartService {
     await shopCartDao.appOrSubtrBookFrmShopCart(shopcart)
     return shopcart
   }
+  async delOneBookFrmSc(shopcartid: number) {
+    return await shopCartDao.delOneBookFrmSc(shopcartid)
+  }
 }
 export default ShopCartService.shopCartService

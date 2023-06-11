@@ -1,6 +1,6 @@
 import { Context } from 'koa'
 import { Controller } from '../decorator/controllerdecorator'
-import { get, post } from '../decorator/reqmethoddecorator'
+import { get, post, del } from '../decorator/reqmethoddecorator'
 import shopCartService from '../modules/shopcart/service/ShopCartService'
 import { success } from '../common/resResult'
 @Controller('/shopcartmodule')
@@ -22,5 +22,11 @@ class ShopCartController {
     const shopCartRaw = ctx.request.body
     const dbShopCart = await shopCartService.appOrSubtrBookFrmShopCart(shopCartRaw)
     ctx.body = success(dbShopCart)
+  }
+  @del('/delBookShopCart/:shopcartid')
+  async deOneBookFrmSc(ctx: Context) {
+    const { shopcartid } = ctx.params
+    const delRecNum = await shopCartService.delOneBookFrmSc(shopcartid)
+    ctx.body = success(delRecNum)
   }
 }

@@ -25,7 +25,7 @@ class ShopCartModel {
         allowNull: false,
       },
       bookprice: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.DOUBLE,
         field: 'bookprice',
         allowNull: false,
       },
