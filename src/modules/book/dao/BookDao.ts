@@ -19,5 +19,11 @@ class BookDao {
       },
     })
   }
+  async findAllBook() {
+    return await booksModel.findAll({
+      order: [['monthsalecount', 'desc']],
+      raw: true
+    })
+  }
 }
 export default BookDao.bookDao
