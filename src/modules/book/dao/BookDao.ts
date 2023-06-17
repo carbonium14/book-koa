@@ -1,3 +1,4 @@
+import { Op } from 'sequelize'
 import { booksModel } from '../defmodel'
 class BookDao {
   static bookDao: BookDao = new BookDao()
@@ -23,6 +24,37 @@ class BookDao {
     return await booksModel.findAll({
       order: [['monthsalecount', 'desc']],
       raw: true
+    })
+  }
+  async findBooksByAutoCompKeyword(autoCompKeyword: string) {
+    return await booksModel.findAll({
+      raw: true,
+      where: {
+        bookname: {
+          [Op.like]: `%${autoCompKeyword}%`
+        }
+      }
+    })
+  }
+  async findPublishersByAutoCompKey(autoCompKeyword: string) {
+    return await booksModel.findAll({
+      attributes: ['publishid', 'publishername'],
+      raw: true,
+      where: {
+        bookname: {
+          [Op.like]: `%${autoCompKeyword}%`
+        }
+      }
+    })
+  }
+  async findBksByPublishIds(publishids: number[]) {
+    return await booksModel.findAll({
+      raw: true,
+      where: {
+        publishid: {
+          [Op.in]: publishids
+        }
+      }
     })
   }
 }
