@@ -6,6 +6,7 @@ import Router from 'koa-router'
 import path from 'path'
 import fs from 'fs'
 import logger from './logUtil'
+import koajwt from 'koa-jwt'
 class AllCtrlRouterLoader {
   app!: Koa
   static allCtrlRouterLoader: AllCtrlRouterLoader = new AllCtrlRouterLoader()
@@ -20,6 +21,11 @@ class AllCtrlRouterLoader {
     this.app.use(json())
     this.app.use(body())
     this.app.use(globalException)
+    this.app.use(koajwt({
+      secret: '114514'
+    }).unless({
+      path: [/^\/dang\/usermodule\/login/, /^\/dang\/ctgymodule/]
+    }))
   }
   storeRootRouterToCtx() {
     const rootRouter = new Router()
