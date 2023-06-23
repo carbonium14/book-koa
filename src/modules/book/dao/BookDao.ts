@@ -57,5 +57,13 @@ class BookDao {
       }
     })
   }
+  async findBooksByISBN(ISBN: string) {
+    return await booksModel.findOne({
+      raw: true,
+      where: {
+        ISBN
+      }
+    })
+  }
 }
 export default BookDao.bookDao

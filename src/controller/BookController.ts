@@ -35,4 +35,10 @@ class BooksController {
     const result = await bookService.findBksByPublishIds(publishids)
     ctx.body = success(result)
   }
+  @get('/findBooksByISBN/:isbn')
+  async findBooksByISBN(ctx: Context) {
+    const { isbn } = ctx.params
+    const result = await bookService.findBooksByISBN(isbn)
+    ctx.body = success(result)
+  }
 }

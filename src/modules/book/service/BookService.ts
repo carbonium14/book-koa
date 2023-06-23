@@ -27,6 +27,9 @@ class BookService {
     await combineBooksWithRanking(books)
     return books
   }
+  async findBooksByISBN(ISBN: string) {
+    return await bookDao.findBooksByISBN(ISBN)
+  }
 }
 export default BookService.bookService
 async function getBooksWithRanking() {
