@@ -1,5 +1,3 @@
-import { evaluateModel } from "../defmodel/index"
-import { replyModel } from "../../reply/defmodel/index"
 import { sequelize } from "../../BaseDao"
 import convert from "../convert"
 class EvaluateDao {
