@@ -1,5 +1,7 @@
 import { Op } from 'sequelize'
 import { booksModel } from '../defmodel'
+import pager, { pageDecorator } from '../../../common/PagerUtil'
+import { sequelize } from '../../BaseDao'
 class BookDao {
   static bookDao: BookDao = new BookDao()
   async findBooksByThirdCtgyId(thirdctgyid: number, sortField: string = 'ISBN', ascOrDesc: string = 'asc') {
@@ -65,5 +67,15 @@ class BookDao {
       }
     })
   }
+  async findBookLstWithPager(curPageNo: string) {
+    const basePagerSql = 'select * from books limit '
+    const recTotalNumSql = 'select count(ISBN) from books'
+    const countPageField = 'ISBN'
+    await this.bookPager(curPageNo, basePagerSql, recTotalNumSql, countPageField)
+    return pager.getCurPageData()
+  }
+  //@ts-ignore
+  @pageDecorator(sequelize)
+  bookPager(curPageNo: string, basePagerSql: string, recTotalNumSql: string, countPageField: string) {}
 }
 export default BookDao.bookDao

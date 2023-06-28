@@ -41,4 +41,10 @@ class BooksController {
     const result = await bookService.findBooksByISBN(isbn)
     ctx.body = success(result)
   }
+  @get('/findBookLstWithPager/:curPageNo')
+  async findBookLstWithPager(ctx: Context) {
+    const { curPageNo } = ctx.params
+    const result = await bookService.findBookLstWithPager(curPageNo)
+    ctx.body = success(result)
+  }
 }

@@ -30,6 +30,9 @@ class BookService {
   async findBooksByISBN(ISBN: string) {
     return await bookDao.findBooksByISBN(ISBN)
   }
+  async findBookLstWithPager(curPageNo: string) {
+    return await bookDao.findBookLstWithPager(curPageNo)
+  }
 }
 export default BookService.bookService
 async function getBooksWithRanking() {
