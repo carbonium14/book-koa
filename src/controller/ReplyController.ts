@@ -1,6 +1,6 @@
 import { Context } from "koa"
-import { get, post } from '../decorator/reqmethoddecorator'
-import { fail, success } from "../common/resResult"
+import { post } from '../decorator/reqmethoddecorator'
+import { success } from "../common/resResult"
 import { Controller } from "../decorator/controllerdecorator"
 import replyService from "../modules/reply/service/ReplyService"
 @Controller('/replymodule')

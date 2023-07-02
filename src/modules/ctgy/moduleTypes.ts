@@ -1,4 +1,4 @@
-import { EleOfArr, combine, combineRelativeCtgy, getNoReptItem, getSubItemFrmArr } from '../commonTypes'
+import { EleOfArr, combine, combineRelative, getNoReptItem, getSubItemFrmArr } from '../commonTypes'
 type SecThrCtgyList = {
   secondCtgyId: number,
   secondCtgyName: string,
@@ -11,7 +11,7 @@ export default function convert(secThrCtgyList: SecThrCtgyList) {
   const secCtgyList = getSubItemFrmArr(secThrCtgyList, 'secondCtgyId', 'secondCtgyName')
   const noReptSecCtgyList = getNoReptItem(secCtgyList, 'secondCtgyId')
   const thrdCtgyList = getSubItemFrmArr(secThrCtgyList, 'thirdCtgyId', 'thirdName', 'secCtgyId')
-  const relativeSecThrCtgyList = combineRelativeCtgy(noReptSecCtgyList, 'thirdCtgys', [])
+  const relativeSecThrCtgyList = combineRelative(noReptSecCtgyList, 'thirdCtgys', [])
   const lastSecThrCtgyList: typeof relativeSecThrCtgyList = []
   type LastSecThrCtgy = EleOfArr<typeof relativeSecThrCtgyList>
   noReptSecCtgyList.map((noReptSecCtgy) => {

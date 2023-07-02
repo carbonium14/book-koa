@@ -24,7 +24,7 @@ class AllCtrlRouterLoader {
     this.app.use(koajwt({
       secret: '114514'
     }).unless({
-      path: [/^\/dang\/usermodule\/login/, /^\/dang\/ctgymodule/]
+      path: [/^\/dang\/usermodule\/login/]
     }))
   }
   storeRootRouterToCtx() {

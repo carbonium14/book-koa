@@ -37,8 +37,14 @@ export function combine<T extends Object[]>(...t: T) {
     return { ...pre, ...cur }
   }, {})
 }
-export function combineRelativeCtgy<T extends ItemType<T>[]>(arr: T, relativeKey: string, Values: any) {
+export function combineRelative<T extends ItemType<T>[]>(arr: T, relativeKey: string, Values: any) {
   return arr.map((item) => {
     return combine(item, { [relativeKey]: Values })
+  })
+}
+export function addEntryToArr<T extends EleOfArr<T>[], K extends keyof EleOfArr<T>>(arr: T, k: K, v: any) {
+  return arr.map((item) => {
+    item[k] = v
+    return item
   })
 }
