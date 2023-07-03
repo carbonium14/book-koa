@@ -12,5 +12,8 @@ class CtgyService {
       return firstCtgysRedis
     }
   }
+  async findSecThrdCtgys(firstCtgyId: number) {
+    return await ctgyDao.findSecThrdCtgys(firstCtgyId)
+  }
 }
 export default CtgyService.ctgyService

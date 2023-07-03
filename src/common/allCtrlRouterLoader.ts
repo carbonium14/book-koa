@@ -24,12 +24,12 @@ class AllCtrlRouterLoader {
     this.app.use(koajwt({
       secret: '114514'
     }).unless({
-      path: [/^\/dang\/usermodule\/login/]
+      path: [/^\/bookstore\/usermodule\/login/]
     }))
   }
   storeRootRouterToCtx() {
     const rootRouter = new Router()
-    rootRouter.prefix('/dang')
+    rootRouter.prefix('/bookstore')
     this.app.context.rootRouter = rootRouter
     this.app.use(rootRouter.routes())
   }

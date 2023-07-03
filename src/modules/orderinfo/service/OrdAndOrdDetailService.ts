@@ -1,5 +1,5 @@
 import ordAndOrdDetailDao from "../dao/OrdAndOrdDetailDao"
-import { OrderInfo, OrdAndOrdDetailLst } from "../defmodel/entity"
+import { OrderInfo } from "../defmodel/entity"
 import { addEntryToArr } from '../../commonTypes'
 import shopCartDao from "../../shopcart/dao/ShopCartDao"
 import convert from '../moduleTypes'

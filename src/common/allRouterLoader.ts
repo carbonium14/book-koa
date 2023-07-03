@@ -37,7 +37,7 @@ class AllRouterLoader {
   }
   getRootRouter() {
     const rootRouter = new Router()
-    rootRouter.prefix('/dang')
+    rootRouter.prefix('/bookstore')
     this.app.use(json())
     this.app.use(body())
     return rootRouter
